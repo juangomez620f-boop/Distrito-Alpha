@@ -70,6 +70,35 @@ nav a.btn-reservar {
 }
 nav a.btn-reservar:hover { background: var(--dorado-hover); }
 
+/* ===== MENÚ HAMBURGUESA ===== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 101;
+}
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #c8994a;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+.menu-toggle.abierto span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.abierto span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.abierto span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
@@ -886,7 +915,6 @@ nav a.btn-reservar:hover { background: var(--dorado-hover); }
   letter-spacing: 0.5px;
 }
 
-/* Botón de cerrar */
 .alpha-cerrar {
   background: rgba(200, 153, 74, 0.15);
   border: 1px solid rgba(200, 153, 74, 0.5);
@@ -915,7 +943,6 @@ nav a.btn-reservar:hover { background: var(--dorado-hover); }
   transform: rotate(90deg);
 }
 
-/* Mensajes */
 .alpha-mensajes {
   flex: 1;
   padding: 18px;
@@ -962,7 +989,6 @@ nav a.btn-reservar:hover { background: var(--dorado-hover); }
   80%, 100% { content: '...'; }
 }
 
-/* Preview de imagen */
 .alpha-preview {
   padding: 10px 18px;
   border-top: 1px solid rgba(200, 153, 74, 0.15);
@@ -992,7 +1018,6 @@ nav a.btn-reservar:hover { background: var(--dorado-hover); }
   margin-left: auto;
 }
 
-/* Input del chat */
 .alpha-input {
   display: flex;
   align-items: center;
@@ -1037,63 +1062,4 @@ nav a.btn-reservar:hover { background: var(--dorado-hover); }
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
-}
-.alpha-enviar:hover {
-  background: var(--dorado-hover);
-  transform: scale(1.05);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  header { padding: 10px 22px; }
-  nav { gap: 16px; }
-  nav a { font-size: 0.7rem; letter-spacing: 1.5px; }
-  nav a:not(.btn-reservar):not(:nth-child(1)):not(:nth-child(3)) { display: none; }
-  .logo-nombre { font-size: 0.85rem; letter-spacing: 2px; }
-  .logo-imagen { width: 40px; height: 40px; }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 100px 25px 60px;
-    min-height: auto;
-  }
-  .hero::before { display: none; }
-  .hero-imagen { min-height: 400px; order: -1; }
-  .hero-titulo { font-size: 2.8rem; }
-  .hero-botones { flex-direction: column; }
-  .btn-primario, .btn-secundario { width: 100%; text-align: center; }
-
-  .seccion, .admin, .servicios, .ubicacion, .resenas { padding: 60px 25px; }
-  .servicios-grid, .equipo-grid { grid-template-columns: 1fr; }
-  .servicio-precio { font-size: 1.8rem; }
-
-  .ubicacion-grid { grid-template-columns: 1fr; gap: 35px; }
-  .ubicacion-mapa { height: 350px; }
-
-  .form-reserva { padding: 25px; }
-
-  .footer { padding: 50px 25px 25px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 35px; }
-
-  .resenas-puntaje { font-size: 3rem; }
-  .resenas-botones { flex-direction: column; gap: 15px; }
-
-  .whatsapp-flotante { bottom: 20px; right: 20px; padding: 12px 18px; }
-  .alpha-btn { bottom: 90px; right: 20px; padding: 10px 16px; font-size: 0.7rem; }
-  .alpha-chat {
-    bottom: 90px;
-    right: 15px;
-    left: 15px;
-    width: auto;
-    height: calc(100vh - 160px);
-  }
-}
-
-@media (max-width: 600px) {
-  .form-fila { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 400px) {
-  .alpha-texto { display: none; }
-  .alpha-btn { padding: 12px; border-radius: 50%; }
 }

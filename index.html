@@ -15,7 +15,13 @@
     <span class="logo-nombre">Distrito Alpha</span>
   </div>
 
-  <nav>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav id="menuNav">
     <a class="activo" data-seccion="inicio" onclick="mostrarSeccion('inicio')">Inicio</a>
     <a data-seccion="servicios" onclick="mostrarSeccion('servicios')">Servicios</a>
     <a data-seccion="equipo" onclick="mostrarSeccion('equipo')">Equipo</a>

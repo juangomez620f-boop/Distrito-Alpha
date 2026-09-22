@@ -287,4 +287,38 @@ document.addEventListener('click', function (e) {
     chat.classList.remove('abierto');
     btn.style.display = 'flex';
   }
+
+  // ===== MENÚ HAMBURGUESA =====
+function toggleMenu() {
+  const nav = document.getElementById('menuNav');
+  const btn = document.querySelector('.menu-toggle');
+  if (!nav || !btn) return;
+
+  nav.classList.toggle('abierto');
+  btn.classList.toggle('abierto');
+}
+
+// Cerrar el menú al hacer clic fuera
+document.addEventListener('click', function(e) {
+  const nav = document.getElementById('menuNav');
+  const btn = document.querySelector('.menu-toggle');
+  if (!nav || !btn) return;
+
+  if (nav.classList.contains('abierto') &&
+      !nav.contains(e.target) &&
+      !btn.contains(e.target)) {
+    nav.classList.remove('abierto');
+    btn.classList.remove('abierto');
+  }
+});
+
+// Cerrar el menú al elegir una opción
+document.querySelectorAll('nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    const nav = document.getElementById('menuNav');
+    const btn = document.querySelector('.menu-toggle');
+    if (nav) nav.classList.remove('abierto');
+    if (btn) btn.classList.remove('abierto');
+  });
+});
 });
