@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distrito Alpha — Barbería en Ibagué</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="img/logo.png" alt="Logo de Distrito Alpha" class="logo-imagen">
+    <span class="logo-nombre">Distrito Alpha</span>
+  </div>
+
+  <nav>
+    <a class="activo" data-seccion="inicio" onclick="mostrarSeccion('inicio')">Inicio</a>
+    <a data-seccion="servicios" onclick="mostrarSeccion('servicios')">Servicios</a>
+    <a data-seccion="equipo" onclick="mostrarSeccion('equipo')">Equipo</a>
+    <a data-seccion="ubicacion" onclick="mostrarSeccion('ubicacion')">Ubicación</a>
+    <a class="btn-reservar" data-seccion="reservar" onclick="mostrarSeccion('reservar')">Reservar</a>
+  </nav>
+</header>
+
+<!-- ===== Inicio ===== -->
+<section class="hero" id="inicio">
+  <div class="hero-texto">
+    <div class="hero-etiqueta">Barbería en Ibagué. </div>
+    <h1 class="hero-titulo">
+      Tu imagen.<br>Tu esencia.
+    </h1>
+    <p class="hero-descripcion">
+      En <strong>Distrito Alpha</strong> queremos que te sientas cómodo y seguro con tu imagen. Nos encargamos de esos detalles que hacen la diferencia.
+      con la opción de disfrutar el servicio en nuestro local o a domicilio.
+      Para que no solo salgas con un buen look, sino también con una sensación de frescura y cuidado. Tu estilo, tu espacio y nuestro trabajo. 
+    </p>
+    <div class="hero-botones">
+      <button class="btn-primario" onclick="mostrarSeccion('reservar')">Reservar mi cita</button>
+      <button class="btn-secundario" onclick="mostrarSeccion('servicios')">Ver servicios</button>
+    </div>
+  </div>
+
+  <div class="hero-imagen">
+    <img src="img/barber.jpg" alt="Barbero de Distrito Alpha" class="hero-slide activo">
+    <img src="img/barber2.jpg" alt="Barbero de Distrito Alpha" class="hero-slide">
+  </div>
+</section>
+
+<!--  Servicios -->
+<section class="seccion servicios" id="servicios">
+  <div class="servicios-encabezado">
+    <div class="seccion-subtitulo">Servicios</div>
+    <h2 class="seccion-titulo">Elige tu servicio hoy.</h2>
+    <p class="servicios-descripcion">
+      Tres servicios especiales. Todos incluyen lavado de cabello y corte de cabello.
+    </p>
+  </div>
+
+  <div class="servicios-grid">
+
+    <div class="servicio-card">
+      <h3 class="servicio-nombre">Corte</h3>
+      <p class="servicio-texto">
+        Corte a medida según tu rostro y tu rol profesional, con lavado y peinado final.
+      </p>
+      <div class="servicio-precio">$20.000</div>
+      <div class="servicio-duracion"> 45 min</div>
+      <button class="btn-reservar-servicio"
+        onclick="mostrarSeccion('reservar'); document.getElementById('servicio').value='Corte de cabello';">
+        Reservar
+      </button>
+    </div>
+
+    <div class="servicio-card destacado">
+      <div class="servicio-badge">Más solicitado</div>
+      <h3 class="servicio-nombre">Corte + Barba</h3>
+      <p class="servicio-texto">
+        Corte preciso y perfilado de barba con toalla caliente.
+      </p>
+      <div class="servicio-precio">$28.000</div>
+      <div class="servicio-duracion"> 70 min</div>
+      <button class="btn-reservar-servicio dorado"
+        onclick="mostrarSeccion('reservar'); document.getElementById('servicio').value='Corte + arreglo de barba';">
+        Reservar
+      </button>
+    </div>
+
+    <div class="servicio-card">
+      <h3 class="servicio-nombre">Servicio completo</h3>
+      <p class="servicio-texto">
+        Asesoría de imagen, tratamiento facial y acabado premium, con todos los servicios.
+      </p>
+      <div class="servicio-precio">$40.000</div>
+      <div class="servicio-duracion">90 min</div>
+      <button class="btn-reservar-servicio"
+        onclick="mostrarSeccion('reservar'); document.getElementById('servicio').value='Servicio Completo';">
+        Reservar
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!--  EQUIPO -->
+<section class="seccion equipo" id="equipo">
+  <div class="equipo-encabezado">
+    <div class="seccion-subtitulo">Equipo</div>
+    <h2 class="seccion-titulo">Personal De Barberia.</h2>
+  </div>
+
+  <div class="equipo-grid">
+
+    <div class="barbero-card">
+      <div class="barbero-imagen">
+        <img src="img/barbero 1.jpg" alt="Kevin — Barbero Distrito Alpha">
+        <div class="barbero-overlay">
+          <button class="btn-reservar-barbero" onclick="reservarCon('Kevin')">
+            Reservar con Kevin
+          </button>
+        </div>
+      </div>
+      <div class="barbero-nombre">Kevin</div>
+    </div>
+
+    <div class="barbero-card">
+      <div class="barbero-imagen">
+        <img src="img/barbero 2.jpg" alt="JuanPa — Barbero Distrito Alpha">
+        <div class="barbero-overlay">
+          <button class="btn-reservar-barbero" onclick="reservarCon('JuanPa')">
+            Reservar con JuanPa
+          </button>
+        </div>
+      </div>
+      <div class="barbero-nombre">JuanPa</div>
+    </div>
+
+    <div class="barbero-card">
+      <div class="barbero-imagen">
+        <img src="img/barbero 3.jpg" alt="Juan — Barbero Distrito Alpha">
+        <div class="barbero-overlay">
+          <button class="btn-reservar-barbero" onclick="reservarCon('Juan')">
+            Reservar con Juan
+          </button>
+        </div>
+      </div>
+      <div class="barbero-nombre">Juan</div>
+    </div>
+
+  </div>
+</section>
+
+<!--  RESERVAS -->
+<section class="seccion" id="reservar">
+  <div class="seccion-encabezado">
+    <div class="seccion-subtitulo">Reserva tu cita</div>
+    <h2 class="seccion-titulo">Agenda tu visita</h2>
+  </div>
+
+  <form class="form-reserva" id="formReserva">
+
+    <div class="form-grupo">
+      <label for="nombre">Tu nombre</label>
+      <input type="text" id="nombre" placeholder="Nombre Completo" required>
+    </div>
+
+    <div class="form-grupo">
+      <label for="telefono">Teléfono / WhatsApp</label>
+      <input type="tel" id="telefono" placeholder="Escribe tu número..." required>
+    </div>
+
+    <div class="form-grupo">
+      <label for="servicio">Servicio</label>
+      <select id="servicio" required>
+        <option value="">Selecciona un servicio</option>
+        <option>Corte de cabello</option>
+        <option>Corte + arreglo de barba</option>
+        <option>Afeitado clásico</option>
+        <option>Corte niño</option>
+        <option>Servicio Completo</option>
+      </select>
+    </div>
+
+    <div class="form-grupo">
+      <label for="barbero">Barbero (opcional)</label>
+      <select id="barbero">
+        <option value="">Sin preferencia</option>
+        <option>Kevin</option>
+        <option>JuanPa</option>
+        <option>Juan</option>
+      </select>
+    </div>
+
+    <div class="form-fila">
+      <div class="form-grupo">
+        <label for="fecha">Fecha de la cita</label>
+        <input type="date" id="fecha" required>
+      </div>
+
+      <div class="form-grupo">
+        <label for="hora">Hora de la cita</label>
+        <input type="time" id="hora" required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primario">Reservar mi cita</button>
+  </form>
+
+  <div class="aviso" id="aviso">✅ ¡Reserva guardada! Te contactaremos pronto.</div>
+
+  <div class="centrar">
+    <button class="btn-secundario" onclick="toggleAdmin()">Ver panel de citas</button>
+  </div>
+
+  <div class="admin" id="adminPanel">
+    <div class="admin-header">
+      <h2 class="seccion-titulo chico">📋 Citas reservadas</h2>
+      <div class="admin-controles">
+        <span class="contador" id="contador">0 citas</span>
+        <button class="btn-eliminar" onclick="borrarTodas()">Borrar todas</button>
+      </div>
+    </div>
+    <div id="listaCitas"></div>
+  </div>
+</section>
+
+<!-- ===== SECCIÓN UBICACIÓN ===== -->
+<section class="seccion ubicacion" id="ubicacion">
+  <div class="ubicacion-grid">
+
+    <div class="ubicacion-info">
+      <div class="seccion-subtitulo">Ubicación</div>
+      <h2 class="seccion-titulo">Nuestra sede en Ibagué.</h2>
+      <p class="ubicacion-descripcion">Parqueadero disponible.</p>
+
+      <div class="ubicacion-datos">
+        <div class="ubicacion-bloque">
+          <strong>Simon parte baja</strong>
+          <span>Cra. 9 #31-11 Ibagué, Tolima, Colombia</span>
+          <span>Ibagué, Tolima, Colombia</span>
+        </div>
+
+        <div class="ubicacion-linea">
+          <span class="ubicacion-icono">📞</span>
+          <span>Teléfono / WhatsApp: +57 317 588 3432</span>
+        </div>
+
+        <div class="ubicacion-linea">
+          <span class="ubicacion-icono">🌐</span>
+          <span>www.distritoalpha.com</span>
+        </div>
+
+        <div class="ubicacion-linea">
+          <span class="ubicacion-icono">🕐</span>
+          <span>Lunes a sábado, 9:00 a.m. – 7:00 p.m. · Domingos y festivos cerrado</span>
+        </div>
+      </div>
+
+      <div class="ubicacion-botones">
+        <button class="btn-primario" onclick="mostrarSeccion('reservar')">Reservar mi cita</button>
+        <a class="btn-secundario" target="_blank"
+           href="https://www.google.com/maps/search/BARBERIA+DISTRITO+ALPHA+Ibagué">
+          Cómo llegar
+        </a>
+      </div>
+    </div>
+
+    <div class="ubicacion-mapa">
+      <iframe
+        src="https://www.google.com/maps?q=BARBERIA+DISTRITO+ALPHA+Ibagu%C3%A9&output=embed"
+        width="100%" height="100%" style="border:0;" allowfullscreen=""
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SECCIÓN RESEÑAS ===== -->
+<section class="seccion resenas" id="resenas">
+  <div class="resenas-encabezado">
+    <div class="seccion-subtitulo">Reseñas</div>
+    <div class="resenas-estrellas">★★★★★</div>
+    <div class="resenas-puntaje">5,0</div>
+    <div class="resenas-cantidad">+100 RESEÑAS EN GOOGLE</div>
+    <p class="resenas-texto">La experiencia de clientes.</p>
+    <div class="resenas-botones">
+      <a class="btn-secundario" target="_blank"
+         href="https://www.google.com/maps/search/BARBERIA+DISTRITO+ALPHA+Ibagué">
+        Ver reseñas en Google
+      </a>
+      <a class="resenas-link" target="_blank"
+         href="https://www.google.com/maps/search/BARBERIA+DISTRITO+ALPHA+Ibagué">
+        Déjanos tu reseña
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-grid">
+
+    <div class="footer-col footer-marca">
+      <img src="img/logo.jpeg" alt="Distrito Alpha" class="footer-logo">
+      <p class="footer-tagline">Distrito Alpha Haircuts and shaves.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-titulo">Ubicación</h4>
+      <p>Simon parte baja</p>
+      <p>Cra. 9 #31-11, Ibagué, Tolima, Colombia</p>
+      <br>
+      <p>Lunes a sábado, 9:00 a.m. – 7:00 p.m.</p>
+      <p>Domingos y festivos cerrado</p>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-titulo">Síguenos</h4>
+
+      <a class="footer-red" href="https://instagram.com" target="_blank">
+        <img src="img/Instagram.png" alt="Instagram" class="footer-icono">
+        Instagram @distritoalpha.ibague
+      </a>
+
+      <a class="footer-red" href="https://tiktok.com" target="_blank">
+        <img src="img/Tiktok.png" alt="TikTok" class="footer-icono">
+        TikTok @distritoalpha
+      </a>
+
+      <a class="footer-red" href="https://facebook.com" target="_blank">
+        <img src="img/Facebook.png" alt="Facebook" class="footer-icono">
+        Facebook Distrito Alpha
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-titulo">Reservas</h4>
+      <button class="btn-footer" onclick="mostrarSeccion('reservar')">Reservar cita</button>
+      <a class="footer-link" href="#">Políticas y privacidad</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Distrito Alpha Barbería. Ibagué, Colombia.
+  </div>
+</footer>
+
+<!-- ===== BOTÓN FLOTANTE WHATSAPP ===== -->
+<a href="https://wa.me/573175883432?text=Hola%20Distrito%20Alpha,%20quiero%20reservar%20una%20cita"
+   class="whatsapp-flotante" target="_blank" rel="noopener">
+  <span class="whatsapp-icono">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </span>
+  Reservar
+</a>
+
+<!-- ===== ALPHA IA - BOTÓN FLOTANTE + CHAT ===== -->
+<button class="alpha-btn" id="alphaBtn" onclick="toggleAlphaChat()" title="Alpha IA">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+    <path d="M12 2L13.09 8.26L19 7L14.5 11L19 15L13.09 13.74L12 20L10.91 13.74L5 15L9.5 11L5 7L10.91 8.26L12 2Z"/>
+  </svg>
+  <span class="alpha-texto">Alpha IA</span>
+</button>
+
+<div class="alpha-chat" id="alphaChat">
+  <div class="alpha-header">
+    <div class="alpha-header-info">
+      <div class="alpha-avatar">DA</div>
+      <div>
+        <div class="alpha-nombre">Alpha IA</div>
+        <div class="alpha-estado">Asistente de Distrito Alpha</div>
+      </div>
+    </div>
+    <button class="alpha-cerrar" onclick="toggleAlphaChat()" title="Cerrar">✕</button>
+  </div>
+
+  <div class="alpha-mensajes" id="alphaMensajes">
+    <div class="alpha-mensaje bot">
+      ¡Hola! Soy Alpha IA, tu asesor de estilo de Distrito Alpha. 💈
+      <br><br>
+      Puedes preguntarme lo que quieras sobre nuestros servicios, precios o productos.
+      También puedes <strong>subir una foto tuya</strong> y te recomendaré cortes que te favorezcan.
+    </div>
+  </div>
+
+  <div class="alpha-preview" id="alphaPreview" style="display:none;">
+    <img id="alphaPreviewImg">
+    <button onclick="cancelarFoto()" class="alpha-preview-cerrar">×</button>
+  </div>
+
+  <div class="alpha-input">
+    <label for="alphaArchivo" class="alpha-adjuntar" title="Subir foto">📎</label>
+    <input type="file" id="alphaArchivo" accept="image/*" style="display:none;" onchange="previewFoto(event)">
+    <input type="text" id="alphaTexto" placeholder="Escribe o sube una foto..." onkeypress="if(event.key==='Enter') enviarMensaje()">
+    <button onclick="enviarMensaje()" class="alpha-enviar">➤</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
