@@ -1,6 +1,16 @@
 // ===== CLAVE DE LOCALSTORAGE =====
 const CLAVE = 'reservasDistritoAlpha';
 
+// ===== MENÚ HAMBURGUESA =====
+function toggleMenu() {
+  const nav = document.getElementById('menuNav');
+  const btn = document.querySelector('.menu-toggle');
+  if (!nav || !btn) return;
+
+  nav.classList.toggle('abierto');
+  btn.classList.toggle('abierto');
+}
+
 // ===== NAVEGACIÓN SUAVE =====
 function irA(id) {
   const seccion = document.getElementById(id);
@@ -33,6 +43,12 @@ function mostrarSeccion(id) {
   document.querySelectorAll('nav a').forEach(a => a.classList.remove('activo'));
   const linkActivo = document.querySelector(`nav a[data-seccion="${id}"]`);
   if (linkActivo) linkActivo.classList.add('activo');
+
+  // Cerrar el menú al hacer clic en una opción
+  const nav = document.getElementById('menuNav');
+  const menuBtn = document.querySelector('.menu-toggle');
+  if (nav) nav.classList.remove('abierto');
+  if (menuBtn) menuBtn.classList.remove('abierto');
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -149,31 +165,10 @@ function toggleAdmin() {
   }
 }
 
-// ===== INICIALIZAR AL CARGAR =====
-document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('.hero-slide');
-  if (slides.length > 1) {
-    let actual = 0;
-    const INTERVALO = 4000;
-    setInterval(() => {
-      slides[actual].classList.remove('activo');
-      actual = (actual + 1) % slides.length;
-      slides[actual].classList.add('activo');
-    }, INTERVALO);
-  }
-
-  mostrarSeccion('inicio');
-  renderizarCitas();
-});
-
-// ============================================
 // ===== ALPHA IA - CHAT FLOTANTE =====
-// ============================================
-
 let fotoActual = null;
 const historialAlpha = [];
 
-// Abrir/cerrar chat
 function toggleAlphaChat() {
   const chat = document.getElementById('alphaChat');
   const btn = document.getElementById('alphaBtn');
@@ -189,7 +184,6 @@ function toggleAlphaChat() {
   }
 }
 
-// Preview de foto
 function previewFoto(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -203,7 +197,6 @@ function previewFoto(event) {
   reader.readAsDataURL(file);
 }
 
-// Cancelar foto
 function cancelarFoto() {
   fotoActual = null;
   const preview = document.getElementById('alphaPreview');
@@ -212,7 +205,6 @@ function cancelarFoto() {
   if (archivo) archivo.value = '';
 }
 
-// Agregar mensaje al chat
 function agregarMensaje(texto, tipo) {
   const cont = document.getElementById('alphaMensajes');
   if (!cont) return null;
@@ -224,26 +216,21 @@ function agregarMensaje(texto, tipo) {
   return div;
 }
 
-// Enviar mensaje
 async function enviarMensaje() {
   const input = document.getElementById('alphaTexto');
   const texto = input.value.trim();
 
   if (!texto && !fotoActual) return;
 
-  // Mostrar mensajes del usuario
   if (texto) agregarMensaje(texto, 'user');
   if (fotoActual) agregarMensaje('📷 Foto enviada', 'user');
 
-  // Guardar en historial
   historialAlpha.push({ role: 'user', text: texto });
 
-  // Limpiar input
   input.value = '';
   const fotoEnviada = fotoActual;
   cancelarFoto();
 
-  // Indicador "escribiendo"
   const escribiendo = agregarMensaje('Alpha IA está escribiendo', 'bot escribiendo');
 
   try {
@@ -275,50 +262,40 @@ async function enviarMensaje() {
   }
 }
 
-// ===== CERRAR CHAT AL HACER CLIC FUERA =====
+// ===== CERRAR MENÚ Y CHAT AL HACER CLIC FUERA =====
 document.addEventListener('click', function (e) {
-  const chat = document.getElementById('alphaChat');
-  const btn = document.getElementById('alphaBtn');
-  if (!chat || !btn) return;
-
-  if (chat.classList.contains('abierto') &&
-      !chat.contains(e.target) &&
-      !btn.contains(e.target)) {
-    chat.classList.remove('abierto');
-    btn.style.display = 'flex';
-  }
-
-  // ===== MENÚ HAMBURGUESA =====
-function toggleMenu() {
+  // Cerrar menú
   const nav = document.getElementById('menuNav');
-  const btn = document.querySelector('.menu-toggle');
-  if (!nav || !btn) return;
-
-  nav.classList.toggle('abierto');
-  btn.classList.toggle('abierto');
-}
-
-// Cerrar el menú al hacer clic fuera
-document.addEventListener('click', function(e) {
-  const nav = document.getElementById('menuNav');
-  const btn = document.querySelector('.menu-toggle');
-  if (!nav || !btn) return;
-
-  if (nav.classList.contains('abierto') &&
-      !nav.contains(e.target) &&
-      !btn.contains(e.target)) {
+  const menuBtn = document.querySelector('.menu-toggle');
+  if (nav && menuBtn && nav.classList.contains('abierto') &&
+      !nav.contains(e.target) && !menuBtn.contains(e.target)) {
     nav.classList.remove('abierto');
-    btn.classList.remove('abierto');
+    menuBtn.classList.remove('abierto');
+  }
+
+  // Cerrar chat
+  const chat = document.getElementById('alphaChat');
+  const chatBtn = document.getElementById('alphaBtn');
+  if (chat && chatBtn && chat.classList.contains('abierto') &&
+      !chat.contains(e.target) && !chatBtn.contains(e.target)) {
+    chat.classList.remove('abierto');
+    chatBtn.style.display = 'flex';
   }
 });
 
-// Cerrar el menú al elegir una opción
-document.querySelectorAll('nav a').forEach(a => {
-  a.addEventListener('click', () => {
-    const nav = document.getElementById('menuNav');
-    const btn = document.querySelector('.menu-toggle');
-    if (nav) nav.classList.remove('abierto');
-    if (btn) btn.classList.remove('abierto');
-  });
-});
+// ===== INICIALIZAR AL CARGAR =====
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length > 1) {
+    let actual = 0;
+    const INTERVALO = 4000;
+    setInterval(() => {
+      slides[actual].classList.remove('activo');
+      actual = (actual + 1) % slides.length;
+      slides[actual].classList.add('activo');
+    }, INTERVALO);
+  }
+
+  mostrarSeccion('inicio');
+  renderizarCitas();
 });
